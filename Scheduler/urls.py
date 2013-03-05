@@ -9,7 +9,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^$', direct_to_template,{"template":"homepage.html"}),
+    url(r'^$', direct_to_template,{"template":"index.html"}),
     (r'^$', 'main.views.index'),
     (r'^admin/', include(admin.site.urls)),
 )
