@@ -34,6 +34,13 @@
 
     <script type="text/javascript">
       $(function(){
+        var $dialog = $('#calendar-details').dialog({
+          autoOpen: false,
+          model: true,
+          height: 300,
+          width: 350
+        });
+
         $('#calendar').fullCalendar({
           header: {
             left: 'prev,next today',
@@ -41,7 +48,31 @@
             right: 'month,agendaWeek,agendaDay'
           },
           editable: true,
+          events: [
+            {
+              title: 'Kevin\'s Appointment',
+              start: new Date(2013, 2, 6, 14, 0),
+              end: new Date(2013, 2, 6, 15, 0),
+              allDay: false
+            }
+          {% for app in appointments %}
+            {
+              title: '{{ app.firstName }} {{ app.lastName }}'s Appointment',
+              start: new Date({{ app.dateScheduled.Year }}, {{ app.dateScheduled.Month }}, {{ app.dateScheduled.Day }})
+            },
+          {% endfor %}
+          ],
+          eventClick: function(event,jsEvent,view){
+            console.log(event);
+            $dialog.dialog({title:event.title});
+            $('p',$dialog).empty().append(
+              $('<p />').text('Kevin has an appointment for his chronic boner disease')
+            );
+            $dialog.dialog('open');
+          }
         });
       });
     </script>
   </body>
+
+</html>

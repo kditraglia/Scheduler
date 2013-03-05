@@ -8,7 +8,7 @@ class Appointment(models.Model):
     posted = models.DateTimeField(db_index=True, auto_now_add=True)
 
     def __unicode__(self):
-        return '%s %s' % self.firstName, self.lastName
+        return '%s %s' % (self.firstName, self.lastName)
 
 #    @permalink
 #    def get_absolute_url(self):
