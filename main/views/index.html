@@ -12,7 +12,6 @@
     <style type="text/css">
       body {
         margin-top: 40px;
-        text-align: center;
         font-size: 14px;
         font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
       }
@@ -27,6 +26,14 @@
 
 
   <body>
+    <form method="post" action="">
+       {% csrf_token %}
+       First Name:<input size="35" name="First"></input><br>
+       Last Name:<input size="35" name="Last"></input><br>
+       Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input size="35" name="Date"></input><br>
+       <textarea style="resize:none" placeholder="What ails you?" cols="50" rows="5" name="problem"></textarea>
+       <input type="submit" Value="Pencil Me In Doc!">
+    </form>
     <div id="calendar"></div>
     <div class="ui-helper-hidden" id="calendar-details" title="Event Details">
       <p>Event details</p>
@@ -49,18 +56,12 @@
           },
           editable: true,
           events: [
-            {
-              title: 'Kevin\'s Appointment',
-              start: new Date(2013, 2, 6, 14, 0),
-              end: new Date(2013, 2, 6, 15, 0),
-              allDay: false
-            }
-          {% for app in appointments %}
-            {
-              title: '{{ app.firstName }} {{ app.lastName }}'s Appointment',
-              start: new Date({{ app.dateScheduled.Year }}, {{ app.dateScheduled.Month }}, {{ app.dateScheduled.Day }})
-            },
-          {% endfor %}
+              {% for app in appointments %}
+              {
+                  title: '{{ app.firstName }} {{ app.lastName }}',
+                  start: new Date({{ app.dateScheduled.year }}, {{ app.dateScheduled.month }}, {{ app.dateScheduled.day }}, 14, 0)
+              },
+              {% endfor %}
           ],
           eventClick: function(event,jsEvent,view){
             console.log(event);
