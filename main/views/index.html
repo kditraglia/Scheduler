@@ -23,25 +23,32 @@
     </style>
   </head>
 
-
-
   <body>
-    <form method="post" action="">
-       {% csrf_token %}
-       First Name:<input size="35" name="First"></input><br>
-       Last Name:<input size="35" name="Last"></input><br>
-       Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input size="35" name="Date"></input><br>
-       <textarea style="resize:none" placeholder="What ails you?" cols="50" rows="5" name="problem"></textarea>
-       <input type="submit" Value="Pencil Me In Doc!">
-    </form>
     <div id="calendar"></div>
-    <div class="ui-helper-hidden" id="calendar-details" title="Event Details">
-      <p>Event details</p>
+    <div class="ui-helper-hidden" id="sched-details">
+      <form method="post" action="">
+        {% csrf_token %}
+        First Name:<input size="20" name="First"></input><br>
+        Last Name:<input size="20" name="Last"></input><br>
+        Date:<input size="20" name="Date" id="Date"></input><br>
+        <textarea style="resize:none" placeholder="What ails you?" cols="20" rows="5" name="problem"></textarea>
+        <input type="submit" Value="Pencil Me In Doc!">
+      </form>
+    </div>
+    <div class="ui-helper-hidden" id="appointment-detail">
+      <p>
     </div>
 
     <script type="text/javascript">
       $(function(){
-        var $dialog = $('#calendar-details').dialog({
+        var $schedDialog = $('#sched-details').dialog({
+          autoOpen: false,
+          model: true,
+          height: 300,
+          width: 350
+        });
+
+        var $dialog = $('#appointment-detail').dialog({
           autoOpen: false,
           model: true,
           height: 300,
@@ -59,17 +66,22 @@
               {% for app in appointments %}
               {
                   title: '{{ app.firstName }} {{ app.lastName }}',
-                  start: new Date({{ app.dateScheduled.year }}, {{ app.dateScheduled.month }}, {{ app.dateScheduled.day }}, 14, 0)
+                  start: new Date({{ app.dateScheduled.year }}, {{ app.dateScheduled.month }}, {{ app.dateScheduled.day }}, 14, 0),
+                  condition: '{{ app.problem }}'
               },
               {% endfor %}
           ],
           eventClick: function(event,jsEvent,view){
-            console.log(event);
             $dialog.dialog({title:event.title});
             $('p',$dialog).empty().append(
-              $('<p />').text('Kevin has an appointment for his chronic boner disease')
+              $('<p />').text(event.title + " has an appointment for " + event.condition)
             );
             $dialog.dialog('open');
+          },
+          dayClick: function(date, allDay, jsEvent, view) {
+            $schedDialog.dialog({title:date.toDateString()});
+            document.getElementById("Date").value = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate();
+            $schedDialog.dialog('open');
           }
         });
       });
