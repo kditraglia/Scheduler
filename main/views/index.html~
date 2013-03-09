@@ -20,7 +20,7 @@
         First Name:<input size="20" name="First"/><br>
         Last Name:<input size="20" name="Last"/><br>
         Date:<input size="20" name="Date" id="Date"/><br>
-        <textarea style="resize:none" placeholder="What ails you?" cols="20" rows="5" name="problem"></textarea>
+        <textarea style="resize:none" placeholder="What ails you?" cols="20" rows="5" name="problem"/>
         <input type="submit" Value="Pencil Me In Doc!">
       </form>
     </div>

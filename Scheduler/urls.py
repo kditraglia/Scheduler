@@ -8,6 +8,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    (r'^$', 'main.views.index'),
-    (r'^admin/', include(admin.site.urls)),
+  (r'^$', 'main.views.index'),
+  (r'^create_calendar', 'main.views.create_calendar'),
+  (r'^admin/', include(admin.site.urls)),
 )

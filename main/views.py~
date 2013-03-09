@@ -20,6 +20,4 @@ def index(request):
 
 def create_calendar(request):
 
-    return render_to_response('static/createcalendar.js', {
-	    'appointments': Appointment.objects.all(),
-	  }, mimetype='text/javascript')
+    return render_to_response('static/createcalendar.js', {}, mimetype='text/javascript')
