@@ -5,7 +5,6 @@ $(function(){
     height: 300,
     width: 350
   });
-
   var $dialog = $('#appointment-detail').dialog({
     autoOpen: false,
     model: true,
@@ -14,32 +13,42 @@ $(function(){
   });
 
   $('#calendar').fullCalendar({
+    disableDragging: true,
     header: {
       left: 'prev,next today',
       center: 'title',
       right: 'month,agendaWeek,agendaDay'
     },
-    editable: true,
-    events: [
-        {% for app in appointments %}
-        {
-            title: '{{ app.firstName }} {{ app.lastName }}',
-            start: new Date({{ app.dateScheduled.year }}, {{ app.dateScheduled.month }}, {{ app.dateScheduled.day }}, 14, 0),
-            condition: '{{ app.problem }}'
-        },
-        {% endfor %}
-    ],
+    events: [],
     eventClick: function(event,jsEvent,view){
-      $dialog.dialog({title:event.title});
-      $('p',$dialog).empty().append(
-        $('<p />').text(event.title + " has an appointment for " + event.condition)
-      );
-      $dialog.dialog('open');
+      showAppointment(jsEvent, event.start);
     },
     dayClick: function(date, allDay, jsEvent, view) {
-      $schedDialog.dialog({title:date.toDateString()});
-      document.getElementById("Date").value = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate();
-      $schedDialog.dialog('open');
-    }
+      showAppointment(jsEvent, date);
+    },
   });
+
+  function showAppointment(jsEvent, date) {
+    $(".fc-state-highlight").removeClass("fc-state-highlight");
+    $(jsEvent.currentTarget).addClass("fc-state-highlight");
+    document.getElementById("appointment-info").style.visibility="visible";
+    document.getElementById("Date").value = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate();
+    getTimes();
+  }
+    function getTimes() {
+      var l = [];
+      var a = new Date(1,1,1,8,0,0);
+      for (var i=0; i<37;i++) {
+          var c = document.getElementById("appt-times");
+          var o = document.createElement("option");
+          o.text = a.toString("hh:mm tt");
+          o.value = a.toString("hh:mm tt");
+          try {
+              c.add(o, null); //Standard 
+          }catch(error) {
+              c.add(o); // IE only
+          }
+		      a.setMinutes(a.getMinutes() + 15);
+      }
+   };
 });

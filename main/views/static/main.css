@@ -5,6 +5,11 @@ body {
 }
 
 #calendar {
-  width: 640px;
-  margin: 0 auto;
+  width: 650px;
+  padding-right: 50px;
+  float: left;
+}
+#appointment-info {
+  float: left;
+  visibility: hidden
 }

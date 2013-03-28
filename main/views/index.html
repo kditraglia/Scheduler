@@ -2,10 +2,11 @@
 <html>
   <head>
     <title>Dr. DiTraglia Appointment Scheduler</title>
+    <script type="text/javascript" src="{{ STATIC_URL }}date.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/create_calendar"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.15/jquery-ui.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}fullcalendar/fullcalendar.min.js"></script>
+    <script type="text/javascript" src="/create_calendar"></script>
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}fullcalendar/fullcalendar.css" />
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}fullcalendar/fullcalendar.print.css" media="print" />
     <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.0/themes/base/jquery-ui.css" />
@@ -13,16 +14,23 @@
   </head>
 
   <body>
-    <div id="calendar"></div>
+    <div id="wrapper">
+      <div id="calendar"></div>
+      <div id="appointment-info">
+        <form method="post" action="">
+          {% csrf_token %}
+          First Name:<input size="20" name="First"/><br>
+          Last Name:<input size="20" name="Last"/><br>
+          Date:<input size="20" name="Date" id="Date" readonly="true"/><br>
+          Time:
+          <select id="appt-times">
+          </select><br>
+          <textarea style="resize:none" placeholder="What ails you?" cols="20" rows="5" name="problem"></textarea>
+          <input type="submit" Value="Pencil Me In Doc!">
+        </form>
+      </div>
+    </div>
     <div class="ui-helper-hidden" id="sched-details">
-      <form method="post" action="">
-        {% csrf_token %}
-        First Name:<input size="20" name="First"/><br>
-        Last Name:<input size="20" name="Last"/><br>
-        Date:<input size="20" name="Date" id="Date"/><br>
-        <textarea style="resize:none" placeholder="What ails you?" cols="20" rows="5" name="problem"></textarea>
-        <input type="submit" Value="Pencil Me In Doc!">
-      </form>
     </div>
     <div class="ui-helper-hidden" id="appointment-detail">
       <p>
