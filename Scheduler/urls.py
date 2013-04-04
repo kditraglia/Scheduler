@@ -9,9 +9,8 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
   (r'^$', 'main.views.index'),
-  (r'^create_calendar', 'main.views.create_calendar'),
+  (r'^about', 'main.views.about'),
+  (r'^directions', 'main.views.directions'),
+  (r'^appointment', 'main.views.appointment'),
   (r'^admin/', include(admin.site.urls)),
-  (r'^month/(\d+)/(\d+)/(prev|next)/$', 'main.views.month'),
-  (r'^month/(\d+)/(\d+)/$', 'main.views.month'),
-  (r'^month$', 'main.views.month'),
 )

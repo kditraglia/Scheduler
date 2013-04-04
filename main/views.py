@@ -24,8 +24,17 @@ def index(request):
         'times': list,
     }, context_instance=RequestContext(request))
 
-def create_calendar(request):
+def about(request):
 
-    return render_to_response('static/createcalendar.js', {
-	    'appointments': Appointment.objects.all(),
-	  }, mimetype='text/javascript')
+    return render_to_response('about.html', {
+	  }, context_instance=RequestContext(request))
+
+def directions(request):
+
+    return render_to_response('directions.html', {
+	  }, context_instance=RequestContext(request))
+
+def appointment(request):
+
+    return render_to_response('appointment.html', {
+	  }, context_instance=RequestContext(request))
