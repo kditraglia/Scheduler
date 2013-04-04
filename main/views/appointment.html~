@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+{% extends 'index.html' %}
+
+{% block content %}
+  <script>
+  $(function() {
+    $( "#Date" ).datepicker({
+      showOn: "button",
+      buttonImage: "{{ STATIC_URL }}calendar.gif",
+      buttonImageOnly: true
+    });
+  });
+  </script>
+      <form method="post" action="">
+        <table border="0">
+          <tr>
+            {% csrf_token %}
+            <td>First Name:</td><td><input size="20" name="First"/></td>
+          </tr>
+          <tr>
+            <td>Last Name:</td><td><input size="20" name="Last"/></td>
+          </tr>
+          <tr>
+            <td>Date:</td><td><input size="20" name="Date" id="Date"/></td>
+          </tr>
+          <tr>
+            <td>Time:</td>
+            <td><select id="appt-times"></select></td>
+          </tr>
+          <tr>
+            <td colspan="2"><textarea style="resize:none" placeholder="What ails you?" cols="45" rows="5" name="problem"></textarea></td>
+          </tr>
+        </table>
+        <input type="submit" Value="Pencil Me In Doc!">
+      </form>
+{% endblock %}
