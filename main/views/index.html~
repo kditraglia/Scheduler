@@ -10,19 +10,20 @@
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}main.css" />
   </head>
 
-  <body bgcolor="#FFDEAD">
+  <body>
+  <div id="page-container">
+     <div id="links">
+        <a href="/appointment">Schedule an Appointment</a> |
+        <a href="/view">View an Appointment</a> |
+        <a href="/directions">Directions</a> |
+        <a href="/about">About Us</a>
+      </div>
     <div id="header">
       <div id="pic">
-        <img src="{{ STATIC_URL }}/photo.JPG" height="188" width="250"/>
+        <img src="{{ STATIC_URL }}Photo.png" height="263" width="350">
       </div>
       <div id="headingtext">
-        <h1>Dr. DiTraglia Pediatrics</h1>
-      </div>
-      <div id="links">
-        <button class="link-button" onclick="window.location.href='/appointment'">Schedule an Appointment</button>
-        <button class="link-button">View an Appointment</button>
-        <button class="link-button" onclick="window.location.href='/directions'">Directions</button>
-        <button class="link-button" onclick="window.location.href='/about'">About Us</button>
+		<img src="C:\Users\kditraglia\Desktop\Untitled2.png" width="437" height="243">
       </div>
     </div>
     <div id="content">

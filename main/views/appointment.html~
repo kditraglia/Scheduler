@@ -21,6 +21,9 @@
             <td>Last Name:</td><td><input size="20" name="Last"/></td>
           </tr>
           <tr>
+            <td>Phone Number:</td><td><input size="20" name="Phone"/></td>
+          </tr>
+          <tr>
             <td>Date:</td><td><input size="20" name="Date" id="Date"/></td>
           </tr>
           <tr>
@@ -28,9 +31,19 @@
             <td><select id="appt-times"></select></td>
           </tr>
           <tr>
-            <td colspan="2"><textarea style="resize:none" placeholder="What ails you?" cols="45" rows="5" name="problem"></textarea></td>
+            <td>Visit Intent:</td>
+            <td>
+              <select>
+                <option value="" style="display:none;"></option>
+                <option>Sports Physical</option>
+                <option>Check up</option>
+                <option>Sick</option>
+                <option>I have a rash</option>
+                <option>AIDS</option>
+              </select>
+            </td>
           </tr>
         </table>
-        <input type="submit" Value="Pencil Me In Doc!">
+        <input type="submit" Value="Submit">
       </form>
 {% endblock %}

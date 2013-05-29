@@ -1,58 +1,42 @@
 body {
-  margin-top: 40px;
-  font-size: 16px;
-  font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+  font-family: 'HelveticaRegular',Helvetica,Arial;
+  font-size: 12px;
+  line-height: 18px;
 }
 
-#calendar {
-  width: 650px;
-  padding-right: 50px;
-  float: left;
-}
-#appointment-info {
-  float: left;
-  visibility: hidden
-}
 #header {
-  width:100%;
-  height:300px;
+  height:263px;
+  margin-left:auto;
+  margin-right:auto;
+  width:1000px;
 }
 #pic {
   float: left;
-  padding: 20px;
+  width: 350px;
+}
+#headingright {
+  float: right;
+  width: 348px;
+  height: 261px;
+  position: relative; 
 }
 #headingtext {
-  padding: 20px;
+  top: 40%;
+  position: relative; 
 }
 #links {
-  padding: 100px;
+  padding: 90px;
+  width:1000px;
+  margin-left:auto;
+  margin-right:auto;
 }
+
 #content {
   clear: both;
   float: left;
   width: 50%;
 }
-.link-button {
-  -webkit-box-shadow:0 0 4px #000;/*safari and Chrome*/
-  -moz-box-shadow:0 0 4px #000; /*Mozilla*/
-  -o-box-shadow:0 0 4px #000; /*Opera*/
-  -ms-box-shadow:0 0 4px #000; /*Ms IE*/
-  box-shadow:0 0 4px #000; /*W3C*/
 
-  -webkit-border-radius:15px;/*safari and Chrome*/
-  -moz-border-radius:15px; /*Mozilla*/
-  -o-box-border-radius:15px; /*Opera*/
-  -ms-box-border-radius:15px; /*Ms IE*/
-  border-radius:15px; /*W3C*/
-
-  background-image:-webkit-linear-gradient(top,#ffffff 0%,#3e9ad2 100%);
-  background-image:-moz-linear-gradient(top,#ffffff 0%,#3e9ad2 100%);
-  background-image:-o-linear-gradient(top,#ffffff 0%,#3e9ad2 100%);
-  background-image:-ms-linear-gradient(top,#ffffff 0%,#3e9ad2 100%);
-  background-image:linear-gradient(top,#ffffff 0%,#3e9ad2 100%);
-  padding: 15px;
-  margin: 15px;
-}
 
 #ui-datepicker-div { 
   display:none 
