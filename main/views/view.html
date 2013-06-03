@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+{% extends 'index.html' %}
+
+{% block content %}
+    <form action="" method="get">
+        <input type="text" name="q">
+        <input type="submit" value="Search">
+    </form>
+    {% if appointments %}
+    <p>You searched for: <strong>{{ query }}</strong></p>
+        <p>Found {{ appointments|length }} appointment{{ appointments|pluralize }}.</p>
+        <ul>
+            {% for appointment in appointments %}
+            <li><a href="/show_appointment/{{appointment.firstName}}">{{ appointment.firstName }} {{ appointment.lastName }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}

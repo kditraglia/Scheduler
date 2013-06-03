@@ -11,39 +11,25 @@
     });
   });
   </script>
-      <form method="post" action="">
-        <table border="0">
-          <tr>
-            {% csrf_token %}
-            <td>First Name:</td><td><input size="20" name="First"/></td>
-          </tr>
-          <tr>
-            <td>Last Name:</td><td><input size="20" name="Last"/></td>
-          </tr>
-          <tr>
-            <td>Phone Number:</td><td><input size="20" name="Phone"/></td>
-          </tr>
-          <tr>
-            <td>Date:</td><td><input size="20" name="Date" id="Date"/></td>
-          </tr>
-          <tr>
-            <td>Time:</td>
-            <td><select id="appt-times"></select></td>
-          </tr>
-          <tr>
-            <td>Visit Intent:</td>
-            <td>
-              <select>
-                <option value="" style="display:none;"></option>
-                <option>Sports Physical</option>
-                <option>Check up</option>
-                <option>Sick</option>
-                <option>I have a rash</option>
-                <option>AIDS</option>
-              </select>
-            </td>
-          </tr>
+    {% if form.errors %}
+        <p style="color: red;">
+            Please correct the error{{ form.errors|pluralize }} below.
+        </p>
+    {% endif %}
+
+    <form action="" method="post">
+        <table>
+            {{ form.as_table }}
+            <tr id="id_sick">
+              <th>Is your entire family sick?</th>
+              <td><input type="radio" name="famsick" value="Yes">Yes<input type="radio" name="famsick" value="No">No</td>
+            </tr>
+            <tr id="id_phys">
+              <th>What Sport?</th>
+              <td><select><option value="" style="display:none;"></option><option>Football</option><option>Baseball</option><option>Other</option></select></td>
+            </tr>
         </table>
-        <input type="submit" Value="Submit">
-      </form>
+        {% csrf_token %}
+        <input type="submit" value="Submit">
+    </form>
 {% endblock %}

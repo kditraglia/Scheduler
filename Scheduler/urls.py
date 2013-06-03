@@ -12,5 +12,10 @@ urlpatterns = patterns('',
   (r'^about', 'main.views.about'),
   (r'^directions', 'main.views.directions'),
   (r'^appointment', 'main.views.appointment'),
+  (r'^view', 'main.views.view'),
   (r'^admin/', include(admin.site.urls)),
+    url(
+      r'^show_appointment/(?P<slug>[^\.]+)',
+      'main.views.show_appointment',
+      name='show_appointment'),
 )

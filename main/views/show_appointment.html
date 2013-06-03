@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+{% extends 'index.html' %}
+
+{% block content %}
+    {% if appointment %}
+        <table>
+            <tr>
+                <td>FirstName: </td>
+                <td>{{ appointment.firstName }}</td>
+            </tr>
+            <tr>
+                <td>LastName: </td>
+                <td>{{ appointment.lastName }}</td>
+            </tr>
+            <tr>
+                <td>Phone: </td>
+                <td>{{ appointment.phoneNumber }}</td>
+            </tr>
+            <tr>
+                <td>DateScheduled: </td>
+                <td>{{ appointment.dateScheduled }}</td>
+            </tr>
+            <tr>
+                <td>Problem: </td>
+                <td>{{ appointment.problem }}</td>
+            </tr>
+        </table>
+    {% endif %}
+{% endblock %}
