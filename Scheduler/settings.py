@@ -10,6 +10,10 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+# Hosts/domain names that are valid for this site; required if DEBUG is False
+# See https://docs.djangoproject.com/en/{{ docs_version }}/ref/settings/#allowed-hosts
+ALLOWED_HOSTS = [ 'drditraglia.com' ]
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
