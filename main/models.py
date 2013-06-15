@@ -11,3 +11,8 @@ class Appointment(models.Model):
     def __unicode__(self):
         return '%s %s' % (self.firstName, self.lastName)
 
+class Problem(models.Model):
+    name = models.CharField(max_length=100)
+    
+    def __unicode__(self):
+        return self.name

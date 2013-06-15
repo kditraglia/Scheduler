@@ -2,15 +2,6 @@
 {% extends 'index.html' %}
 
 {% block content %}
-  <script>
-  $(function() {
-    $( "#Date" ).datepicker({
-      showOn: "button",
-      buttonImage: "{{ STATIC_URL }}calendar.gif",
-      buttonImageOnly: true
-    });
-  });
-  </script>
     {% if form.errors %}
         <p style="color: red;">
             Please correct the error{{ form.errors|pluralize }} below.
@@ -18,18 +9,76 @@
     {% endif %}
 
     <form action="" method="post">
+        <table style="float: left;">
+          {{ form.as_table }}
+        </table>
         <table>
-            {{ form.as_table }}
-            <tr id="id_sick">
-              <th>Is your entire family sick?</th>
-              <td><input type="radio" name="famsick" value="Yes">Yes<input type="radio" name="famsick" value="No">No</td>
-            </tr>
-            <tr id="id_phys">
-              <th>What Sport?</th>
-              <td><select><option value="" style="display:none;"></option><option>Football</option><option>Baseball</option><option>Other</option></select></td>
-            </tr>
+          <tr id="id_problem">
+            <th valign="top">Please check all that apply</th>
+            <td><table>
+              {% for problem in problems %}
+                {% if forloop.counter0|divisibleby:"2" %}
+                  {% if forloop.counter0 == 0 %}
+                    </tr>
+                  {% endif %}
+                  <tr>
+                {% endif %}
+                <td><input type="checkbox">{{ problem.name }}</td>
+              {% endfor %}
+              <tr>
+                <th>Other Problems</th>
+                <td><input type="text"></td>
+              </tr>
+            </table></td>
+          </tr>
+          <tr id="id_phys">
+            <td>
+              <table>
+                <tr>
+                  <th>Have you ever had any Surgery?</th>
+                  <td><input type="radio" name="1">Yes<input type="radio" name="1">No</td>
+                </tr>
+                <tr>
+                  <th>Have you ever passed out?</th>
+                  <td><input type="radio" name="1">Yes<input type="radio" name="1">No</td>
+                </tr>
+                <tr>
+                  <th>Have you ever had any injuries or joint problems?</th>
+                  <td><input type="radio" name="1">Yes<input type="radio" name="1">No</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr id="id_checkup">
+            <td>
+              <table>
+                <tr>
+                  <th>Are we due shots?</th>
+                  <td><input type="radio" name="1">Yes<input type="radio" name="1">No<input type="radio" name="1"> Don't Know</td>
+                </tr>
+                <tr>
+                  <th>How old?</th>
+                  <td>
+                    <select id="select-choice-2">
+                      <option>Less than 1 month</option>
+                      <option>1 to 3 months</option>
+                      <option>3 to 5 months</option>
+                      <option>5 months to 1 year</option>
+                      <option>1 to 3 years</option>
+                      <option>3 to 5 years</option>
+                      <option>More than 5 years</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Any problems since last visit?</th>
+                  <td><input type="text"></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
         </table>
         {% csrf_token %}
-        <input type="submit" value="Submit">
+        <input type="submit" value="Submit" style="float: left; clear: both;">
     </form>
 {% endblock %}

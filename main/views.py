@@ -1,4 +1,4 @@
-from main.models import Appointment
+from main.models import Appointment, Problem
 from main.Forms import AppointmentForm
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
@@ -47,7 +47,9 @@ def appointment(request):
                 'appointment': appointment,
             }, context_instance=RequestContext(request))
     else:
-        form= AppointmentForm()
+        form = AppointmentForm()
+        problems = Problem.objects.all()
     return render_to_response('appointment.html', {
         'form': form,
+        'problems': problems,
     }, context_instance=RequestContext(request))

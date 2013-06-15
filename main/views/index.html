@@ -5,8 +5,10 @@
     <script type="text/javascript" src="http://www.datejs.com/build/date.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.15/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}timepicker/jquery.timepicker.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}utility.js"></script>
     <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.0/themes/base/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}timepicker/jquery.timepicker.css" />
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}main.css" />
   </head>
 
@@ -27,9 +29,11 @@
       </div>
     </div>
     <div id="content">
+      <hr style="clear:both; margin-bottom: 1cm;">
       {% block content %}
   
       {% endblock %}
+      <hr style="clear:both; margin-top: 1cm">
     </div>
   </body>
 
