@@ -32,6 +32,7 @@ def show_appointment(request, slug):
     }, context_instance=RequestContext(request))
 
 def appointment(request):
+    problems = []
     if request.method == 'POST':
         form = AppointmentForm(request.POST)
         if form.is_valid():
@@ -41,7 +42,7 @@ def appointment(request):
                lastName=cd['lastName'],
                phoneNumber=cd['phoneNumber'],
                dateScheduled=cd['dateScheduled'],
-               problem=cd['problem'],)
+               problem=cd['reason'],)
             appointment.save()       
             return render_to_response('show_appointment.html', {
                 'appointment': appointment,
