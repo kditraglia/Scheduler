@@ -1,7 +1,7 @@
 # Django settings for Scheduler project.
 import os
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -12,7 +12,7 @@ MANAGERS = ADMINS
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/{{ docs_version }}/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = [ 'drditraglia.com' ]
+ALLOWED_HOSTS = [ 'drditraglia.com', 'www.drditraglia.com' ]
 
 DATABASES = {
     'default': {
